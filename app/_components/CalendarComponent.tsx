@@ -6,44 +6,54 @@ import "./custom-calendar-styles.scss"; // Import the custom styles
 // Localizer for React Big Calendar
 const localizer = momentLocalizer(moment);
 
-// Type definition for the event structure
-interface EventDetails {
-  id: number;
-  title: string;
-  start: Date;
-  end: Date;
-  description: string;
-  colorEvento: string; // Use hash color codes for background
-  color: string; // Use hash color codes for text color
-}
+// Event data (unchanged)
+const events = [
+  {
+    id: 1,
+    title: "Team Meeting",
+    start: moment("2024-11-22T10:00:00Z").toDate(),
+    end: moment("2024-11-22T11:00:00Z").toDate(),
+    colorEvento: "#C9B0FF",
+    color: "black",
+    description: "Discuss the team project and weekly updates.",
+  },
+  {
+    id: 2,
+    title: "Project Deadline",
+    start: moment("2024-11-25T12:00:00Z").toDate(),
+    end: moment("2024-11-25T14:00:00Z").toDate(),
+    colorEvento: "#3FB898",
+    color: "black",
+    description: "Final project submission deadline.",
+  },
+];
+
+// Function to apply custom styles to the current day
+const calendarStyle = (date: Date) => {
+  const currentDate = `${new Date().getDate()} ${new Date().getMonth() + 1} ${new Date().getFullYear()}`;
+  const allDate = `${date.getDate()} ${date.getMonth() + 1} ${date.getFullYear()}`;
+
+  // Check if the date matches the current date and apply custom styles
+  if (allDate === currentDate) {
+    return {
+      style: {
+        backgroundColor: '#F1F0FE', // Purple background
+        color: 'white', // White text color for contrast
+        margin: 0,
+        padding: 0
+      }
+    };
+  }
+
+  // Return null if no custom style is needed
+  return {};
+};
 
 export default function EventCalendar() {
-  // State to hold the selected event details
-  const [selectedEvent, setSelectedEvent] = useState<EventDetails | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<any>(null);
 
-  const events: EventDetails[] = [
-    {
-      id: 1,
-      title: "Team Meeting",
-      start: moment("2024-11-22T10:00:00Z").toDate(),
-      end: moment("2024-11-22T11:00:00Z").toDate(),
-      colorEvento: "#C9B0FF",
-      color: "black",
-      description: "Discuss the team project and weekly updates.",
-    },
-    {
-      id: 2,
-      title: "Project Deadline",
-      start: moment("2024-11-25T12:00:00Z").toDate(),
-      end: moment("2024-11-25T14:00:00Z").toDate(),
-      colorEvento: "#3FB898",
-      color: "black",
-      description: "Final project submission deadline.",
-    },
-  ];
-
-  const handleEventClick = (event: EventDetails) => {
-    setSelectedEvent(event); 
+  const handleEventClick = (event: any) => {
+    setSelectedEvent(event);
   };
 
   return (
@@ -55,19 +65,15 @@ export default function EventCalendar() {
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500 }}
-        onSelectEvent={handleEventClick} // Handle event click
+        onSelectEvent={handleEventClick}
         eventPropGetter={(event) => {
-          // Apply colors based on the event's color properties (using hash colors)
-          const backgroundColor = event.colorEvento || "#0000FF"; // Default to blue if not provided
-          const color = event.color || "#000000"; // Default to black text color if not provided
+          const backgroundColor = event.colorEvento || "#0000FF";
+          const color = event.color || "#000000";
           return { style: { backgroundColor, color } };
         }}
-        components={{
-          event: ({ event }) => (
-            <span style={{ color: 'black' }} className="text-black">
-              {event.title}
-            </span>
-          ),
+        dayPropGetter={(date) => {
+          // Apply the custom styling for the current day
+          return calendarStyle(date);
         }}
       />
 

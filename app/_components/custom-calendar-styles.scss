@@ -1,0 +1,11 @@
+// custom-calendar-styles.scss
+@import 'react-big-calendar/lib/sass/styles'; // Default styles
+@import 'react-big-calendar/lib/addons/dragAndDrop/styles'; // If using DnD
+
+// Customizations: Override default variables
+$rbc-toolbar-bg: #6b46c1 !important;  // Change toolbar background to purple
+$rbc-toolbar-color: white !important; // Change toolbar text color to white
+$rbc-month-bg: #f0f0f0 !important;   // Change the month view background
+
+$rbc-current-bg: #6b46c1 !important; // Change current day highlight to purple
+$rbc-current-color: white !important; // Text color for current day

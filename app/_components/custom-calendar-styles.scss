@@ -9,3 +9,50 @@ $rbc-month-bg: #f0f0f0 !important;   // Change the month view background
 
 $rbc-current-bg: #6b46c1 !important; // Change current day highlight to purple
 $rbc-current-color: white !important; // Text color for current day
+
+/* In custom-calendar-styles.scss */
+
+/* Set the text color for the calendar headers (days, month names, etc.) */
+.rbc-header {
+    color: black !important; /* Ensures header text is black */
+  }
+  
+  /* Set the text color for the day cells */
+  .rbc-day, .rbc-day-slot {
+    color: black !important; /* Ensure day cell text is black */
+  }
+  
+  /* Set the text color for the current day */
+  .rbc-day-now {
+    color: black !important; /* Set current day text to black */
+  }
+  
+  /* Set the text color for the month header */
+  .rbc-month-header {
+    color: black !important; /* Month header text color */
+  }
+  
+  /* Set the text color for the week and day names */
+  .rbc-month-view .rbc-row {
+    color: black !important; /* Day names (Mon, Tue, etc.) in the month view */
+  }
+  
+  /* Set the text color for event titles in the calendar */
+  .rbc-event {
+    color: black !important; /* Ensure event text is black */
+  }
+  
+  /* Ensure the text in the selected event details is black */
+  .rbc-selected {
+    color: black !important;
+  }
+
+.rbc-time-slot, .rbc-time {
+    color: black !important; /* Ensure time labels are black */
+  }
+  
+  /* Optional: If you also want to change the background color of the time slots */
+  .rbc-time-slot {
+    background-color: transparent !important; /* Makes sure time slots don't have a background color */
+  }
+

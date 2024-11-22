@@ -116,8 +116,6 @@ const calendarStyle = (date: Date) => {
       style: {
         backgroundColor: "#F1F0FE", // Purple background
         color: "white", // White text color for contrast
-        margin: 0,
-        padding: 0,
       },
     };
   }
@@ -146,13 +144,14 @@ export default function EventCalendar() {
         eventPropGetter={(event) => {
           const backgroundColor = event.colorEvento || "#0000FF";
           const color = event.color || "#000000";
-          return { style: { backgroundColor, color } };
+          const border = "none";
+          return { style: { backgroundColor, color, border } };
         }}
         dayPropGetter={(date) => {
           // Apply the custom styling for the current day
           return calendarStyle(date);
         }}
-        views={["week", "day","agenda"]} // Allow week view
+        views={["week", "day"]} // Allow week view
         defaultView="week" // Set default view to 'week'
       />
 

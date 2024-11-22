@@ -12,6 +12,27 @@ $rbc-current-color: white !important; // Text color for current day
 
 /* In custom-calendar-styles.scss */
 
+// Apply globally to the entire calendar
+.rbc-calendar {
+  font-family: 'DM Sans', sans-serif; // Apply DM Sans
+  font-size: 14px; // Optional: adjust font size
+}
+
+// Specific sections of the calendar
+.rbc-header {
+  font-weight: 700; // Bold headers
+}
+
+.rbc-event {
+  font-weight: 500; // Medium weight for events
+  color: #333; 
+  border:none;
+}
+
+.rbc-day-slot .rbc-time-slot {
+  font-style: normal; // Optional: set style
+}
+
 /* Set the text color for the calendar headers (days, month names, etc.) */
 .rbc-header {
     color: black !important; /* Ensures header text is black */
